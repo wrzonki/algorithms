@@ -7,38 +7,33 @@ let edgeCase3 = ['test', 'test2'];
 let edgeCase4 = 'test';
 
 const findNum = (arr) => {
-    if (arr.constructor !== Array) {
-        console.warn(`Argument is not an array`);
-        return;
-    }
-    if (arr.length < 2) {
-        console.warn(`Array length is less than 2`);
-        return;
+    try {
+        if (arr.constructor !== Array) throw new Error(`Argument is not an array`);
+        if (arr.length < 2) throw new Error(`Array length is less than 2`);
+        if (isNaN(Math.abs(arr[0])) || isNaN(Math.abs(arr[arr.length -1]))) throw new Error(`Elements in array are not number`);
+
+        let left = Math.abs(arr[0]);
+        let right = Math.abs(arr[arr.length -1]);
+
+        if (!left || !right) {
+            console.log(`I found 0.`);
+            return;
+        }
+
+        if (left === right) {
+            console.log(`You are looking for: ${left}`);
+            return;
+        }
+        if (left > right) {
+            arr.shift();
+        } else {
+            arr.pop();
+        }
+        findNum(arr);
+    } catch (error) {
+        console.warn(error);
     }
 
-    let left = Math.abs(arr[0]);
-    let right = Math.abs(arr[arr.length -1]);
-
-    if (isNaN(left) || isNaN(right)) {
-        console.warn(`Elements in array are not number`);
-        return;
-    }
-
-    if (!left || !right) {
-        console.log(`I found 0.`);
-        return;
-    }
-
-    if (left === right) {
-        console.log(`You are looking for: ${left}`);
-        return;
-    }
-    if (left > right) {
-        arr.shift();
-    } else {
-        arr.pop();
-    }
-    findNum(arr);
 };
 console.log(`===example===`);
 findNum(example)
