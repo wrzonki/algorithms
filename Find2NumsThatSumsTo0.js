@@ -33,8 +33,9 @@ const findNum = (arr) => {
     } catch (error) {
         console.warn(error);
     }
-
 };
+
+//TESTS
 console.log(`===example===`);
 findNum(example)
 console.log(`===edgeCase1===`);
