@@ -10,7 +10,7 @@ const findNum = (arr) => {
     try {
         if (arr.constructor !== Array) throw new Error(`Argument is not an array`);
         if (arr.length < 2) throw new Error(`Array length is less than 2`);
-        if (isNaN(Math.abs(arr[0])) || isNaN(Math.abs(arr[arr.length -1]))) throw new Error(`Elements in array are not number`);
+        if (isNaN(arr[0]) || isNaN(arr[arr.length -1])) throw new Error(`Elements in array are not number`);
 
         let left = Math.abs(arr[0]);
         let right = Math.abs(arr[arr.length -1]);
