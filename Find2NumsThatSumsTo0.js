@@ -24,11 +24,13 @@ const findNum = (arr) => {
             console.log(`You are looking for: ${left}`);
             return;
         }
+
         if (left > right) {
             arr.shift();
         } else {
             arr.pop();
         }
+
         findNum(arr);
     } catch (error) {
         console.warn(error);
